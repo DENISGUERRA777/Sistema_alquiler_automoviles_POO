@@ -2,6 +2,10 @@
 package dao;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.MongoDB;
 import modelo.Empleado;
 import modelo.Usuario;
@@ -58,4 +62,43 @@ public class EmpleadoDAO {
         // Devolver el empleado encontrado
         return e;
     }
+    //Metodo para retornar todos los empleados
+    public List<Empleado> findAllEmpleados() {
+        List<Empleado> empleados = new ArrayList<>();
+        for (Document doc : col.find()) {
+            Empleado emp = new Empleado();
+            emp.setId(doc.getObjectId("_id"));
+            emp.setNombre(doc.getString("nombres"));
+            emp.setApellido(doc.getString("apellidos"));
+            emp.setCargo(doc.getString("cargo"));
+            emp.setSalario(doc.getDouble("salario"));
+            //para el objeto incrustado usuario lo convertimos a clase y lo instanciamos manualmente 
+            Document usuarioDoc = doc.get("usuario", Document.class);
+            if(usuarioDoc != null){
+                Usuario usuarioEmp = new Usuario();
+                usuarioEmp.setNick(usuarioDoc.getString("username"));
+                usuarioEmp.setRolUsuario(usuarioDoc.getString("rolUsuario"));
+                usuarioEmp.setPasswordHash(usuarioDoc.getString("password"));
+                emp.setUsuario(usuarioEmp);
+            }
+            empleados.add(emp);
+        }
+        return empleados;
+    }
+    
+    //Metodo para actualizar empleado
+    public boolean updateEmpleado(Empleado emp) {
+        // Usamos set para actualizar campos específicos
+        UpdateResult result = col.updateOne(
+                Filters.eq("_id", emp.getId()),
+                Updates.combine(
+                        Updates.set("nombres", emp.getNombre()),
+                        Updates.set("apellidos", emp.getApellido()),
+                        Updates.set("cargo", emp.getCargo()),
+                        Updates.set("salario", emp.getSalario())
+                )
+        );
+        return result.getModifiedCount() > 0;
+    }
+    
 }

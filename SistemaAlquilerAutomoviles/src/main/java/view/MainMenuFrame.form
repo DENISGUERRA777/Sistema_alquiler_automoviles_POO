@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUsuarios">
       <Properties>
-        <Property name="text" type="java.lang.String" value="USUARIOS"/>
+        <Property name="text" type="java.lang.String" value="EMPLEADOS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuariosActionPerformed"/>

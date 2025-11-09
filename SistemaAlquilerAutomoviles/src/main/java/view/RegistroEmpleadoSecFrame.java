@@ -1,25 +1,25 @@
 /*
- * Formulario para registrar usuarios nuevos
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
 import controlador.AutenticacionControlador;
-import static java.lang.Double.parseDouble;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author vm23024
+ * @author deven
  */
-public class RegistroEmpleadoFrame extends javax.swing.JFrame {
+public class RegistroEmpleadoSecFrame extends javax.swing.JFrame {
     
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistroEmpleadoSecFrame.class.getName());
       // Propiedades personalizadas
     private AutenticacionControlador auth = new AutenticacionControlador();
-
     /**
-     * Creates new form RegistroUsuarioFrame
+     * Creates new form RegistroEmpleadoSecFrame
      */
-    public RegistroEmpleadoFrame() {
+    public RegistroEmpleadoSecFrame() {
         initComponents();
     }
 
@@ -32,15 +32,8 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        txtPass = new javax.swing.JPasswordField();
-        txtConPass = new javax.swing.JPasswordField();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
         cmbRolUsuario = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -49,31 +42,18 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
+        txtConPass = new javax.swing.JPasswordField();
+        btnGuardar = new javax.swing.JButton();
         txtApellido = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
         txtCargo = new javax.swing.JTextField();
-        txtSalario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Usuario:");
-
-        jLabel2.setText("Contraseña:");
-
-        jLabel3.setText("Confirmar contraseña:");
-
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Rol de usuario:");
         jLabel4.setToolTipText("");
@@ -96,6 +76,26 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Usuario:");
+
+        jLabel2.setText("Contraseña:");
+
+        jLabel3.setText("Confirmar contraseña:");
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,16 +112,12 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCodigo)
-                                    .addComponent(txtCargo)
-                                    .addComponent(txtSalario)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(68, 68, 68))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(txtCargo)
+                            .addComponent(txtSalario)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombre))
+                        .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +174,7 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,6 +183,10 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
@@ -212,7 +212,7 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
             return;
         }
-        
+
         if (!pass.equals(confirm)) {
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.");
             return;
@@ -226,22 +226,18 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
         if (ok) {
             JOptionPane.showMessageDialog(this, "El empleado y usuario se creo correctamente.");
             dispose();
-            // Retornar al login si solo existe 
-            new LoginFrame().setVisible(true);
+            // Retornar al login si solo existe
+            new MainMenuFrame().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Parece que el usuario o codigo de empleado ya existen.");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:         
+        // TODO add your handling code here:
         new LoginFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,26 +255,13 @@ public class RegistroEmpleadoFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleadoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleadoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleadoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroEmpleadoFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroEmpleadoFrame().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new RegistroEmpleadoSecFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

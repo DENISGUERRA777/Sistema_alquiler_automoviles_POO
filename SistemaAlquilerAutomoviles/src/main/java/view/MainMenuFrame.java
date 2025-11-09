@@ -58,7 +58,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
             }
         });
 
-        btnUsuarios.setText("USUARIOS");
+        btnUsuarios.setText("EMPLEADOS");
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
@@ -129,6 +129,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
+        new EmpleadosFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed

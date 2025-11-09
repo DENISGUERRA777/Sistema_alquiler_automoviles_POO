@@ -63,9 +63,10 @@ public class AutenticacionControlador {
         
         return u.getRolUsuario();
     }
-    
+    //Metodo para buscar un valor en un campo
     public Object[] admins(String campo, String valor){
         Object[] buscar = userDAO.findByOther(valor, campo);
         return buscar;
     }
+    
 }
