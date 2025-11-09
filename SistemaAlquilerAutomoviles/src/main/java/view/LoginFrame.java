@@ -20,6 +20,13 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        Object[] admins = auth.admins("rolUsuario", "Administrador");
+        //Si aun no existe ningun usuario administrador el sistema pedira registrar un empleado administrador
+        if((int)admins[1] > 0){
+            btnRegistrarse.setVisible(false);
+        }else{
+            btnRegistrarse.setVisible(true);
+        }
     }
 
     /**
@@ -74,7 +81,7 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,13 +106,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-         String user = txtUsuario.getText();
+        String user = txtUsuario.getText();
         String pass = new String(txtPassword.getPassword());
         boolean ok = auth.login(user, pass);
         if (ok) {
             // abrir menu principal
             // Se envia el usuario al constructor
-            new MainMenuFrame().setVisible(true);
+            new MainMenuFrame(user).setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
@@ -115,7 +122,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
-        new RegistroUsuarioFrame().setVisible(true);
+        new RegistroEmpleadoFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 

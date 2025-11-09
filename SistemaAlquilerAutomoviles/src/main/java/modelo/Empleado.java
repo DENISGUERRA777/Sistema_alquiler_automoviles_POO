@@ -4,12 +4,15 @@ alquileres
  */
 package modelo;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author vm23024
  */
 public class Empleado extends Persona{
     //Atributos adicionales a los de persona;
+    private ObjectId id;
     private String codigo;
     private String cargo;
     private double salario;
@@ -27,9 +30,18 @@ public class Empleado extends Persona{
         this.salario = salario;
         this.usuario = usuario;
     }
-
     
+    
+
     //Getters y setters de los atributos del empleado
+    
+    public ObjectId getId() {
+        return id;
+    }
+    public void setId(ObjectId id) {    
+        this.id = id;
+    }
+
     public String getCodigo() {
         return codigo;
     }

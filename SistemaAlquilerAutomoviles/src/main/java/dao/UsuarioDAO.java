@@ -2,11 +2,15 @@
  * Metodos para manipular la informacion de la coleccion de usuarios
  */
 package dao;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import java.awt.List;
+import java.util.ArrayList;
 import modelo.MongoDB;
 import org.bson.Document;
 import modelo.Usuario;
+import org.bson.conversions.Bson;
 /**
  *
  * @author deven
@@ -44,7 +48,18 @@ public class UsuarioDAO {
         u.setId(d.getObjectId("_id"));
         u.setNick(d.getString("username"));
         u.setPasswordHash(d.getString("passwordHash"));
+        u.setRolUsuario(d.getString("rolUsuario"));
         // Devolver el usuario encontrado
         return u;
+    }
+    
+    public Object[] findByOther(String value, String fieldName){
+        //creamos filtro
+        Bson filtro = Filters.eq(fieldName, value);
+        //Contar resultados encontrados
+        long totalFilas = col.countDocuments(filtro);
+        //Resultados encontrados para iterar
+        //List<Document> resultados = col.find(filtro).into(new ArrayList<>());
+        return new Object[]{col.find(filtro).into(new ArrayList<>()), (int) totalFilas};
     }
 }

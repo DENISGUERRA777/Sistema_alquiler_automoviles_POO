@@ -37,7 +37,7 @@
                   <Component id="txtUsuario" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtPassword" alignment="0" min="-2" pref="277" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="64" max="32767" attributes="0"/>
+              <EmptySpace pref="87" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
