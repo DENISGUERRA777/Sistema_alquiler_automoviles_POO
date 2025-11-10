@@ -227,7 +227,7 @@ public class RegistroEmpleadoSecFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El empleado y usuario se creo correctamente.");
             dispose();
             // Retornar al login si solo existe
-            new MainMenuFrame().setVisible(true);
+            new EmpleadosFrame().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Parece que el usuario o codigo de empleado ya existen.");
         }

@@ -2,10 +2,11 @@
  * Metodos para manipular la informacion de la coleccion de usuarios
  */
 package dao;
-import com.mongodb.client.FindIterable;
+
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
-import java.awt.List;
+import com.mongodb.client.result.DeleteResult;
+
 import java.util.ArrayList;
 import modelo.MongoDB;
 import org.bson.Document;
@@ -61,5 +62,10 @@ public class UsuarioDAO {
         //Resultados encontrados para iterar
         //List<Document> resultados = col.find(filtro).into(new ArrayList<>());
         return new Object[]{col.find(filtro).into(new ArrayList<>()), (int) totalFilas};
+    }
+    // DELETE
+    public boolean deleteUsuario(String userName) {
+        DeleteResult result = col.deleteOne(Filters.eq("username", userName));
+        return result.getDeletedCount() > 0;
     }
 }

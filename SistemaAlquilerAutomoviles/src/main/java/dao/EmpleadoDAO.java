@@ -3,6 +3,7 @@ package dao;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +19,13 @@ import org.bson.types.ObjectId;
 public class EmpleadoDAO {
     //Colección de MongoDB donde se almacenan los documentos de empleados y usuarios.
     private MongoCollection<Document> col;
+    private UsuarioDAO usrDAO;
     
     public EmpleadoDAO() {
         // Obtiene la colección "empleados" desde la conexión a MongoDB
         col = MongoDB.getDatabase().getCollection("empleados");
+        //Para poder hacer modificaciones en la tabla relacionada
+        usrDAO = new UsuarioDAO();
     }
     
     public void insert(Empleado e){
@@ -44,7 +48,32 @@ public class EmpleadoDAO {
         
         e.setId(d.getObjectId("_id"));
     }
-    
+    public Empleado findById(ObjectId id){
+        // Buscar el primer documento donde el campo "codigo" coincida con el codigo
+        Document d = col.find(Filters.eq("_id", id)).first();
+        // Si no existe ningún usuario con ese nombre, retornar null
+        if (d == null) {
+            return null;
+        }
+        // Crear un nuevo objeto Usuario y mapear los campos desde el documento BSON
+        Empleado e = new Empleado();
+        e.setId(d.getObjectId("_id"));
+        e.setCodigo(d.getString("codigo"));
+        e.setCargo(d.getString("cargo"));
+        e.setSalario(d.getDouble("salario"));
+        //Seteando el objeto usuario incrustado como objeto
+        Document usuarioDoc = d.get("usuario", Document.class);
+        if(usuarioDoc != null){
+            Usuario usuarioEmp = new Usuario();
+            usuarioEmp.setNick(usuarioDoc.getString("username"));
+            usuarioEmp.setPasswordHash(usuarioDoc.getString("password"));
+            usuarioEmp.setRolUsuario(usuarioDoc.getString("rolUsuario"));
+            e.setUsuario(usuarioEmp);
+        }
+        //e.setUsuario(d.getUsuario);
+        // Devolver el empleado encontrado
+        return e;
+    }
     public Empleado findByCodigo(String codigo){
         // Buscar el primer documento donde el campo "codigo" coincida con el codigo
         Document d = col.find(Filters.eq("codigo", codigo)).first();
@@ -58,6 +87,15 @@ public class EmpleadoDAO {
         e.setCodigo(d.getString("codigo"));
         e.setCargo(d.getString("cargo"));
         e.setSalario(d.getDouble("salario"));
+        //Seteando el objeto usuario incrustado como objeto
+        Document usuarioDoc = d.get("usuario", Document.class);
+        if(usuarioDoc != null){
+            Usuario usuarioEmp = new Usuario();
+            usuarioEmp.setNick(usuarioDoc.getString("username"));
+            usuarioEmp.setPasswordHash(usuarioDoc.getString("password"));
+            usuarioEmp.setRolUsuario(usuarioDoc.getString("rolUsuario"));
+            e.setUsuario(usuarioEmp);
+        }
         //e.setUsuario(d.getUsuario);
         // Devolver el empleado encontrado
         return e;
@@ -68,6 +106,7 @@ public class EmpleadoDAO {
         for (Document doc : col.find()) {
             Empleado emp = new Empleado();
             emp.setId(doc.getObjectId("_id"));
+            emp.setCodigo(doc.getString("codigo"));
             emp.setNombre(doc.getString("nombres"));
             emp.setApellido(doc.getString("apellidos"));
             emp.setCargo(doc.getString("cargo"));
@@ -92,6 +131,7 @@ public class EmpleadoDAO {
         UpdateResult result = col.updateOne(
                 Filters.eq("_id", emp.getId()),
                 Updates.combine(
+                        Updates.set("codigo", emp.getCodigo()),
                         Updates.set("nombres", emp.getNombre()),
                         Updates.set("apellidos", emp.getApellido()),
                         Updates.set("cargo", emp.getCargo()),
@@ -99,6 +139,25 @@ public class EmpleadoDAO {
                 )
         );
         return result.getModifiedCount() > 0;
+    }
+    //Metodo para eliminar registros
+    public boolean deleteEmpleado(String id) {
+        ObjectId objectId = new ObjectId(id);
+        // Buscar el primer documento donde el campo "codigo" coincida con el codigo
+        Document d = col.find(Filters.eq("_id", objectId)).first();
+        // Si no existe ningún usuario con ese nombre, retornar null
+        if (d == null) {
+            return false;
+        }
+        //Seteando el objeto usuario incrustado para eliminar en la tabla relacionada
+        Document usuarioDoc = d.get("usuario", Document.class);
+        if(usuarioDoc != null){
+            String nombreUsuario = usuarioDoc.getString("username");
+            usrDAO.deleteUsuario(nombreUsuario);//Se elimina en la tabla relacionada
+        }
+        
+        DeleteResult result = col.deleteOne(Filters.eq("_id", objectId));
+        return result.getDeletedCount() > 0;
     }
     
 }
