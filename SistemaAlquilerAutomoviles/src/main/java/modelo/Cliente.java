@@ -4,13 +4,15 @@
  */
 package modelo;
 
+import org.bson.types.ObjectId;
+
 /**
  *
  * @author deven
  */
 public class Cliente extends Persona{
     //Atributos propios de los clientes
-    private int id;
+    private ObjectId id;
     private String licencia;
     private String telefono;
     private String correo;
@@ -19,15 +21,48 @@ public class Cliente extends Persona{
     public Cliente() {
     }
 
-    public Cliente(int id, String licencia, String telefono, String correo, String nombre, String apellido) {
+    public Cliente( String licencia, String telefono, String correo, String nombre, String apellido) {
         super(nombre, apellido);
-        this.id = id;
         this.licencia = licencia;
         this.telefono = telefono;
         this.correo = correo;
     }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    
+
+    public String getLicencia() {
+        return licencia;
+    }
+
+    public void setLicencia(String licencia) {
+        this.licencia = licencia;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
         
-   
+    
     
     @Override
     public void registrar() {
