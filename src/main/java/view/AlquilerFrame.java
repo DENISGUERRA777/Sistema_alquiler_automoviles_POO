@@ -1,6 +1,5 @@
 
 package view;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -8,8 +7,6 @@ import org.bson.types.ObjectId;
 import modelo.Alquiler;
 import dao.AlquilerDAO;
 import controlador.AlquilerControlador;
-
-
 
 /**
  *
@@ -35,7 +32,7 @@ public class AlquilerFrame extends javax.swing.JFrame {
         
     }
     private void setupTable() {
-        String[] columnNames = {"ID", "Cliente", "Empleado", "Vehiculo", "Fecha Inicio", "Fecha Fin", "Total pago"};
+        String[] columnNames = {"ID", "Fecha Inicio", "Fecha Fin", "Total pago"};
         tableModel = new DefaultTableModel(columnNames, 0){
             @Override
             public boolean isCellEditable(int fila, int columna) {
@@ -133,43 +130,43 @@ public class AlquilerFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(btnAgregarAlquiler)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAtras)
-                .addGap(139, 139, 139))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(204, 204, 204))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(btnActualizar)
-                        .addGap(202, 202, 202)
-                        .addComponent(btnBorrar)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(btnAgregarAlquiler))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(btnActualizar)))
+                        .addGap(138, 138, 138)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBorrar)
+                            .addComponent(btnAtras))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarAlquiler)
                     .addComponent(btnAtras))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnActualizar)
                     .addComponent(btnBorrar))
-                .addGap(20, 20, 20))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -188,7 +185,7 @@ public class AlquilerFrame extends javax.swing.JFrame {
          //captura los datos del la fila
          int fila = tbAlquiler.getSelectedRow();
          ObjectId id = (ObjectId) tableModel.getValueAt(fila, 0);
-         String fechaInicio = (String)tableModel.getValueAt(fila, 1);
+         String fechaInicio = (String)tableModel.getValueAt(fila, 1);       
          String fechaFin = (String)tableModel.getValueAt(fila, 2);
          double totalPago = (double)tableModel.getValueAt(fila, 3);
          //intenta actualizar el docuemto

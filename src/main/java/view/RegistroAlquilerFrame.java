@@ -38,12 +38,6 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
         btnGuardarAlq = new javax.swing.JButton();
         btnCancelarAlq = new javax.swing.JButton();
         txtTotalPago = new javax.swing.JTextField();
-        jNombre = new javax.swing.JLabel();
-        jNombre1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtVehiculo = new javax.swing.JTextField();
-        txtEmpleado = new javax.swing.JTextField();
-        txtNombreCl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,12 +73,6 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
             }
         });
 
-        jNombre.setText("Nombre de cliente");
-
-        jNombre1.setText("Nombre empleado");
-
-        jLabel1.setText("Vehiculo");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,21 +87,17 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLFechaInicio)
-                            .addComponent(jLFechaFin)
-                            .addComponent(jNombre)
-                            .addComponent(jNombre1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLTotalPago, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(93, 93, 93)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLFechaFin)
+                                .addComponent(jLTotalPago))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLFechaInicio)))
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtFechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                             .addComponent(txtFechaFin)
-                            .addComponent(txtTotalPago)
-                            .addComponent(txtVehiculo)
-                            .addComponent(txtEmpleado)
-                            .addComponent(txtNombreCl))))
+                            .addComponent(txtTotalPago))))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,27 +107,15 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLFechaInicio))
-                .addGap(26, 26, 26)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLFechaFin)
-                    .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLFechaFin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLTotalPago)
                     .addComponent(txtTotalPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNombre)
-                    .addComponent(txtNombreCl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNombre1)
-                    .addComponent(txtEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarAlq)
                     .addComponent(btnCancelarAlq))
@@ -163,15 +135,11 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
         String fechaInicio = txtFechaInicio.getText().trim();
         String fechaFin = txtFechaFin.getText().trim();
         double totalPago = Double.parseDouble(txtTotalPago.getText().trim());
-        String nombreCl = txtNombreCl.getText().trim();
-        String empleado = txtEmpleado.getText().trim();
-        String codigo = txtVehiculo.getText().trim();
-        
         //Valida la entrada de totalPago
         if(totalPago<0){
             throw new IllegalArgumentException("El pago total de alquiler no puede ser negativo");
         }
-        if(fechaInicio.isEmpty() || fechaFin.isEmpty() || nombreCl.isEmpty() || empleado.isEmpty() || codigo.isEmpty()){
+        if(fechaInicio.isEmpty() || fechaFin.isEmpty()){
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
             return;
         }
@@ -252,14 +220,8 @@ public class RegistroAlquilerFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLFechaFin;
     private javax.swing.JLabel jLFechaInicio;
     private javax.swing.JLabel jLTotalPago;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jNombre;
-    private javax.swing.JLabel jNombre1;
-    private javax.swing.JTextField txtEmpleado;
     private javax.swing.JFormattedTextField txtFechaFin;
     private javax.swing.JFormattedTextField txtFechaInicio;
-    private javax.swing.JTextField txtNombreCl;
     private javax.swing.JTextField txtTotalPago;
-    private javax.swing.JTextField txtVehiculo;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,7 +14,7 @@ public class Alquiler {
     private double totalPago;
     private ObjectId id;
     
-    
+   
     //Constructor para manejar la información del alquiler
     public Alquiler() {
     }
@@ -23,12 +23,12 @@ public class Alquiler {
         //valida que la entrada del pago total sea positiva
         if(totalPago < 0){
             throw new IllegalArgumentException("El pago total no puede ser negativo");
-        }
+        }   
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
         this.totalPago = totalPago;
     }
-    
+   
     //Getters y setters de los atributos del alquiler
     public String getFechaInicio() {
         return fechaInicio;
