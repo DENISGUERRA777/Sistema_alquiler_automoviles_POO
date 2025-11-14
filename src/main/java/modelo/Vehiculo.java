@@ -48,6 +48,10 @@ public class Vehiculo {
         disponible = true;//por defecto el vehiculo estara disponible 
         this.proveedores = proveedores;
     }
+
+    public Vehiculo() {
+        
+    }
     
     //Getters
 
@@ -87,7 +91,26 @@ public class Vehiculo {
         return proveedores;
     }
     
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
+    }
+
     //Setter
+    public void setTipo(TipoVehiculo tipo) {
+        this.tipo = tipo;
+    }
 
     public void setPrecioDia(double precioDia) {
         this.precioDia = precioDia;

@@ -236,7 +236,7 @@ public class RegistroVehiculosFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El Vehiculo se ha registrado con exito.");
             dispose();
             // Retornar al login si solo existe
-            new MainMenuFrame().setVisible(true);
+            new VehiculosFrame().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Parece que el Vehiculo ya esta registrado.");
         }

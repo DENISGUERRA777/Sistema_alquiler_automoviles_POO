@@ -3,6 +3,7 @@ modelo\MongoDB.class
 view\RegistroVehiculosFrame$1.class
 view\EmpleadosFrame$4.class
 view\VehiculosFrame$3.class
+view\AlquilerFrame$11.class
 view\VehiculosFrame$7.class
 modelo\Alquiler.class
 view\ClientesFrame$1.class
@@ -13,11 +14,14 @@ view\AlquilerFrame$3.class
 controlador\ClienteControlador.class
 dao\ClienteDAO.class
 view\ClientesFrame$4.class
+view\RegistroAlquilerFrame$3.class
 view\RegistroVehiculosFrame$5.class
 dao\VehiculoDAO.class
 controlador\AlquilerControlador.class
+view\AlquilerFrame$10.class
 view\EmpleadosFrame$5.class
 view\LoginFrame$1.class
+view\RegistroAlquilerFrame$1.class
 view\RegistroEmpleadoFrame.class
 controlador\VehiculoControlador.class
 view\VehiculosFrame.class
@@ -31,6 +35,7 @@ modelo\Empleado.class
 view\VehiculosFrame$2.class
 view\ClientesFrame$3.class
 view\EmpleadosFrame.class
+view\RegistroAlquilerFrame$4.class
 view\AlquilerFrame$7.class
 view\AlquilerFrame$1.class
 view\RegistroEmpleadoSecFrame$2.class
@@ -51,15 +56,18 @@ modelo\Proveedor.class
 view\LoginFrame$2.class
 view\RegistroEmpleadoFrame$2.class
 view\MainMenuFrame$4.class
+view\RegistroAlquilerFrame$5.class
 view\RegistroClienteFrame.class
 view\RegistroEmpleadoSecFrame$1.class
 view\VehiculosFrame$8.class
+view\AlquilerFrame$8.class
 view\RegistroVehiculosFrame$3.class
 controlador\AutenticacionControlador.class
 view\ClientesFrame$2.class
 view\EmpleadosFrame$2.class
 utils\PasswordUtil.class
 dao\UsuarioDAO.class
+view\RegistroAlquilerFrame$6.class
 view\ClientesFrame.class
 modelo\TipoProveedor.class
 view\MainMenuFrame$5.class
@@ -77,6 +85,7 @@ view\RegistroEmpleadoFrame$4.class
 modelo\Cliente.class
 modelo\Persona.class
 modelo\Vehiculo.class
+view\AlquilerFrame$9.class
 view\RegistroEmpleadoFrame$1.class
 view\EmpleadosFrame$3.class
 view\VehiculosFrame$4.class

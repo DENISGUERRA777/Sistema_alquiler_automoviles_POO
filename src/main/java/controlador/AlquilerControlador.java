@@ -2,9 +2,12 @@
 package controlador;
 
 import dao.AlquilerDAO;
+import java.util.Date;
 import org.bson.types.ObjectId;
 
 import modelo.Alquiler;
+import modelo.Cliente;
+import modelo.Vehiculo;
 
 /**
  *
@@ -14,16 +17,14 @@ public class AlquilerControlador {
     //Objeto de acceso a datos (DAO) para manejar operaciones relacionadas con la entidad
     private AlquilerDAO alquilerDao = new AlquilerDAO();
     
-    public boolean register(String fechaInicio, String fechaFin, double totalPago){
-        //Verifica si el alquiler ya esta registrado
-        if(alquilerDao.findByCode(totalPago) != null){
-            return false;
-        }
-        
-        //crear un nuevo objeto alquiler
-        Alquiler alquiler = new Alquiler( fechaInicio, fechaFin, totalPago);
-        //lo introduce en la db
-        alquilerDao.insert(alquiler);
+    public boolean register(Date inicio, Date fin, Double totalPago, Vehiculo vh, Cliente cl){
+        Alquiler nuevoAlquiler = new Alquiler();
+        nuevoAlquiler.setCliente(cl);
+        nuevoAlquiler.setVehiculo(vh);
+        nuevoAlquiler.setFechaInicio(inicio);
+        nuevoAlquiler.setFechaFin(fin);
+        nuevoAlquiler.setTotalPago(totalPago);
+        alquilerDao.insert(nuevoAlquiler);
         return true;
     }
     
@@ -33,14 +34,14 @@ public class AlquilerControlador {
     }
     
     //Actualiza un documento
-    public boolean update(ObjectId id, String fechaInicio, String fechaFin, double totalPago){
+    public boolean update(ObjectId id, Date fechaInicio, Date fechaFin, Double totalPago, Vehiculo vh, Cliente cl){
         //Verifica si el alquiler ya esta en la base de datos
          if(alquilerDao.findByCode(totalPago) != null){
             return false;
         }
         
         //Crea un nuevo objeto alquiler
-        Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, totalPago);
+        Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, totalPago, vh, cl);
         alquiler.setId(id);
         //actualiza los datos en la db
         return alquilerDao.updateAlquiler(alquiler);
