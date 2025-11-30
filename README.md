@@ -31,5 +31,28 @@ Interfaces DAO: Definen las operaciones estándar (Create, Read, Update, Delete)
 
 Implementación DAO: Contiene el código específico del driver de MongoDB, permitiendo que si en el futuro se cambia a SQL, solo se toque esta capa sin afectar la interfaz gráfica.
 
+⚙️ Configuración de la Base de Datos
+Para que la aplicación funcione correctamente, asegúrate de tener una instancia de MongoDB corriendo y configura lo siguiente:
+
+URI de Conexión: mongodb://localhost:27017 (Por defecto)
+
+Nombre de la Base de Datos: AlquilerAutosDB (Cámbialo si tu código usa otro nombre)
+
+Colecciones Principales:
+
+vehiculos
+
+clientes
+
+rentas
+
+🚀 Instalación y Ejecución
+Prerrequisitos
+Tener instalado Java JDK.
+
+Tener instalado Maven.
+
+Tener MongoDB instalado y ejecutándose localmente.
+
 ✒️ Autor
 Denis Guerra - Desarrollador Principal -
